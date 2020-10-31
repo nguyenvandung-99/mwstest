@@ -11,3 +11,41 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/* Teams */
+.teams {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  margin: 0 2rem;
+  list-style-type: none;
+  color: #333;
+}
+
+.teams li {
+  flex: 0 1 15rem;
+  padding: 0.5rem;
+  border: 0.1rem #bbb solid;
+  margin: -0.05rem;
+  text-align: center;
+}
+
+.teams img {
+  height: 15rem;
+  width: 15rem;
+  color: #333;
+  line-height: 15rem;
+  display: block;
+  overflow: hidden;
+}
+
+.teams a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.teams p {
+  font-weight: bold;
+}

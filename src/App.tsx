@@ -1,4 +1,3 @@
-import './App.css';
 import HomeScreen from './screens/HomeScreen';
 import TeamDetail from './screens/TeamDetail';
 import React from 'react';

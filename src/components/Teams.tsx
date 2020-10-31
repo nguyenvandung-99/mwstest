@@ -8,7 +8,7 @@ export default function Teams(props: any) {
   return (
     <div>
       {
-        !props.teams? (
+        props.teams.length === 0 ? (
           <div>Loading...</div>
         ) : (
           <ul className="teams">
@@ -18,7 +18,10 @@ export default function Teams(props: any) {
                   <img 
                   src={team.logos[0]}
                   alt={team.abbreviation}
-                  style={{backgroundColor:team.color}} />
+                  />
+                  <p>
+                    {team.school}
+                  </p>
                 </Link>
               </li>
             ))}
