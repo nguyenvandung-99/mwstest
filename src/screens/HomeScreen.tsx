@@ -3,29 +3,44 @@ import Teams from "../components/Teams";
 import { fetchTeams } from '../api/api';
 import { Team } from "../types";
 
-export default class HomeScreen extends React.Component {
+interface MyState {
+  teams: Team[] | null
+  page: number
+  entries: number
+  searchWord: string
+}
+
+export default class HomeScreen extends React.Component <{}, MyState> {
   constructor(props: any) {
     super(props);
     this.state = {
-      teams: null as Team[] | null,
-      page: 1 as number,
-      searchTeams: null as Team[] | null,
-      searchWord: null as string | null
+      teams: JSON.parse(sessionStorage.teams),
+      page: 1,
+      entries: 10,
+      searchWord: "",
+    }
+  }
+
+  refreshTeams() { // refresh when user go to website 1st time and also make it an option
+    if (!this.state.teams) {
+      fetchTeams()
+      .then(teams => {
+        sessionStorage.setItem('teams', JSON.stringify(teams));
+        this.setState ({
+          teams
+        });
+      })      
     }
   }
 
   componentDidMount() {
-    fetchTeams().then(
-      teams => this.setState({
-        teams,
-        searchTeams: JSON.parse(JSON.stringify(teams))
-      })
-    )
+    this.refreshTeams();
   }
 
   render() {
+    
     return (
-      <Teams />
+      <Teams teams={null} />
     )
   }
 }
