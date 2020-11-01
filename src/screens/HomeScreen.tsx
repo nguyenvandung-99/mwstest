@@ -16,8 +16,8 @@ export default class HomeScreen extends React.Component<{}, MyState> {
     super(props);
     this.pageNavi = this.pageNavi.bind(this);
     this.state = {
-      teams: sessionStorage.teams ? JSON.parse(sessionStorage.teams) : [], // Usually || would work too but this is to prevent CORS error
-      page: props.match.params.page ? parseInt(props.match.params.page) : 1,
+      teams: sessionStorage.teams ? JSON.parse(sessionStorage.teams) : [],
+      page: props.match.params.page ? parseInt(props.match.params.page) : 1, // let user go to page from address bar
       entries: localStorage.entries ? JSON.parse(localStorage.entries) : 10, // user's preference, saved on local for next time
       searchWord: "",
     };
@@ -25,7 +25,6 @@ export default class HomeScreen extends React.Component<{}, MyState> {
 
   pageNavi(page: number): void {
     window.history.pushState({}, "", JSON.stringify(page));
-    console.log(page);
     this.setState({
       page,
     });

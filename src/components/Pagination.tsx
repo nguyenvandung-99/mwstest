@@ -27,13 +27,13 @@ export default function Pagination(props: any) {
         onClick={() => buttonPage(1)}>
         Begin
       </button>
-      <span onSubmit={(e) => enterPage(e)}>
+      <form onSubmit={(e) => enterPage(e)}>
         <input
         name="page"
         type="number"
         value={page}
         onChange={(e) => setPage(parseInt(e.target.value))} />
-      </span>
+      </form>
       <button
         disabled={props.page === props.pagemax}
         onClick={() => buttonPage(props.pagemax)}
