@@ -26,9 +26,8 @@ code {
 
 .teams li {
   flex: 0 1 15rem;
-  padding: 0.5rem;
-  border: 0.1rem #bbb solid;
-  margin: -0.05rem;
+  border: 0.2rem #bbb solid;
+  margin: -0.1rem;
   text-align: center;
 }
 
@@ -39,6 +38,8 @@ code {
   line-height: 15rem;
   display: block;
   overflow: hidden;
+  border-bottom: 0.1rem #bbb solid;
+  padding: 0.5rem;
 }
 
 .teams a {

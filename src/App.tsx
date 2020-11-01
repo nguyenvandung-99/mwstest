@@ -8,11 +8,12 @@ function App() {
     <BrowserRouter>
       <div className="App"> 
         <header>
-          <Link to="/">Home</Link>
+          <Link to="/1">Home</Link>
         </header>
         <main>
           <Route path="/" component={HomeScreen} exact />
-          <Route path="/team/:name" component={TeamDetail} />
+          <Route path="/:page" component={HomeScreen} exact />
+          <Route path="/teamdetail/:name" component={TeamDetail} />
         </main>
       </div>
     </BrowserRouter>

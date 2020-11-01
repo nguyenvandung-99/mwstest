@@ -1,5 +1,11 @@
 import React from "react";
 
-export default class HomeScreen extends React.Component {
-
+export default class TeamDetail extends React.Component {
+  
+  render() {
+    return (
+      <>
+      </>
+    )
+  }
 }

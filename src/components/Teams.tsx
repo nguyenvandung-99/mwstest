@@ -14,9 +14,9 @@ export default function Teams(props: any) {
           <ul className="teams">
             {props.teams.map((team: Team) => (
               <li key={team.id}>
-                <Link to="/team/:name">
+                <Link to="/teamdetail/:name">
                   <img 
-                  src={team.logos[0]}
+                  src={team.logos ? team.logos[0] : ""}
                   alt={team.abbreviation}
                   />
                   <p>
