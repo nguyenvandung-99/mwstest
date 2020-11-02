@@ -12,6 +12,10 @@ code {
     monospace;
 }
 
+html {
+  font-size: 100%;
+}
+
 /* Teams */
 .teams {
   display: flex;
@@ -52,6 +56,26 @@ code {
 }
 
 /* Pagination */
+.pagination {
+  position: fixed;
+  bottom: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
 form {
   display: inline;
+}
+
+input[type="number"]::-webkit-outer-spin-button, 
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+input[type="number"] {
+    -moz-appearance: textfield;
 }

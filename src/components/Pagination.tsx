@@ -4,7 +4,7 @@ export default function Pagination(props: any) {
   
   const [page, setPage] = useState(props.page);
 
-  const enterPage = (e: any) => { // enter the page
+  const enterPage = (e: React.SyntheticEvent) => { // enter the page
     e.preventDefault();
     props.pageNavi(page);
   }
@@ -15,7 +15,7 @@ export default function Pagination(props: any) {
   }
   
   return (
-    <>
+    <div className="pagination">
       <button
         disabled={props.page === 1}
         onClick={() => buttonPage(props.page - 1)}
@@ -25,20 +25,22 @@ export default function Pagination(props: any) {
       <button
         disabled={props.page === 1}
         onClick={() => buttonPage(1)}>
-        Begin
+        Page 1
       </button>
-      <form onSubmit={(e) => enterPage(e)}>
+      <form onSubmit={enterPage}>
         <input
         name="page"
         type="number"
         value={page}
+        min={1}
+        max={props.pagemax}
         onChange={(e) => setPage(parseInt(e.target.value))} />
       </form>
       <button
         disabled={props.page === props.pagemax}
         onClick={() => buttonPage(props.pagemax)}
       >
-        End
+        Page {props.pagemax}
       </button>
       <button
         disabled={props.page === props.pagemax}
@@ -46,6 +48,6 @@ export default function Pagination(props: any) {
       >
         &gt;
       </button>
-    </>
+    </div>
   );
 }
