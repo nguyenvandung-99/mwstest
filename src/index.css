@@ -18,7 +18,7 @@ html {
   font-size: 100%;
 }
 
-/* Home Screen */
+/* Screen */
 .App {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -26,8 +26,16 @@ html {
   color: #2c3e50;
   display: flex;
   flex-direction: column;
+  min-height: 100vh;
 }
 
+main {
+  flex-grow: 1;
+}
+
+footer {
+  flex-shrink: 0;
+}
 
 /* Header */
 header {
@@ -136,17 +144,30 @@ ul.games {
 
 .games .game-time {
   flex: 10%;
-  border: 0.1rem solid #aaa;
+  border: 0.1rem solid #bbb
 }
 
 .games .game-team {
   flex: 30%;
-  border: 0.1rem solid #aaa;
   text-align: left;
+  border: 0.1rem solid #bbb
 }
 
 .games .game-score {
-  flex: 50%;
-  border: 0.1rem solid #aaa;
+  flex: 50%;  
   padding: auto;
+  border: 0.1rem solid #bbb
+}
+
+.games table th, .games table td {
+  width: 3rem;
+}
+
+/* Footer */
+
+footer {
+  border-top: solid #999 0.1rem;
+  margin-top: 1rem;
+  background-color: #aaa;
+  padding: 1rem;
 }

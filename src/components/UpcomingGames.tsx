@@ -13,29 +13,29 @@ export default function UpcomingGames(props: any) {
             {props.upcoming.map((game: Game) => (
               <li key={game.id}>
                 <div className="game-time">
-                  <table>
+                  <table style={{ margin:"auto" }}>
                     <tr>{new Date(game.start_date).toString().slice(4, 10)}</tr>
                     <tr>{game.start_date.slice(11, 16)}</tr>
                   </table>
                 </div>
                 <div className="game-team">
-                  <table>
+                  <table style={{ marginLeft: "0.5rem" }}>
                     <tr>{game.home_team}</tr>
                     <tr>{game.away_team}</tr>
                   </table>
                 </div>
                 <div className="game-score">
-                  <table>
+                  <table style={{ marginLeft: "0.5rem" }}>
                     <tr>
                       <th>-</th>
                       {["-", "-", "-", "-"].map((score: string) => (
-                        <th>{score}</th>
+                        <td>{score}</td>
                       ))}
                     </tr>
                     <tr>
                       <th>-</th>
                       {["-", "-", "-", "-"].map((score: string) => (
-                        <th>{score}</th>
+                        <td>{score}</td>
                       ))}
                     </tr>
                   </table>

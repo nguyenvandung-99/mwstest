@@ -1,13 +1,13 @@
-import HomeScreen from './screens/HomeScreen';
-import TeamDetail from './screens/TeamDetail';
-import React from 'react';
+import React from "react";
 import { BrowserRouter, Route, Link, Switch } from "react-router-dom";
-import Footer from './components/Footer';
+import Footer from "./components/Footer";
+import HomeScreen from "./screens/HomeScreen";
+import TeamDetail from "./screens/TeamDetail";
 
 function App() {
   return (
     <BrowserRouter>
-      <div className="App"> 
+      <div className="App">
         <header>
           <Link to="/page/1">Home</Link>
         </header>
