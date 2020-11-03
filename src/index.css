@@ -12,8 +12,49 @@ code {
     monospace;
 }
 
+
+
 html {
   font-size: 100%;
+}
+
+/* Home Screen */
+.App {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  display: flex;
+  flex-direction: column;
+}
+
+
+/* Header */
+header {
+  overflow: hidden;
+  padding: 0.7rem;
+  border-bottom: solid #999 0.1rem;
+  background-color: #fff;
+  flex-shrink: 0;
+}
+
+header a {
+  align-items: center;
+  padding: 1rem 2rem;
+  text-decoration: none;
+  color: #111;
+}
+
+header a:hover {
+  background-color: #e99;
+}
+
+@media (min-height: 400px) {
+  /* only stick if it fits the screen*/
+  header {
+    position: sticky;
+    top: 0;
+  }
 }
 
 /* Teams */
@@ -57,15 +98,14 @@ html {
 
 /* Pagination */
 .pagination {
-  position: fixed;
-  bottom: 1rem;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+  position: -webkit-sticky;
+  position: sticky;
+  bottom: 1rem;
 }
-
-
 
 form {
   display: inline;
@@ -78,4 +118,35 @@ input[type="number"]::-webkit-inner-spin-button {
 }
 input[type="number"] {
     -moz-appearance: textfield;
+}
+
+/* Games */
+ul.games {
+  padding: 0rem 2rem;
+}
+
+.games li {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.games li > * {
+  padding: 0.2rem;
+}
+
+.games .game-time {
+  flex: 10%;
+  border: 0.1rem solid #aaa;
+}
+
+.games .game-team {
+  flex: 30%;
+  border: 0.1rem solid #aaa;
+  text-align: left;
+}
+
+.games .game-score {
+  flex: 50%;
+  border: 0.1rem solid #aaa;
+  padding: auto;
 }

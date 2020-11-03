@@ -1,7 +1,7 @@
 import React from "react";
-import Teams from "../components/Teams";
 import { fetchTeams } from "../api/api";
 import { Team } from "../types";
+import Teams from "../components/Teams";
 import Pagination from "../components/Pagination";
 import SearchBar from "../components/SearchBar";
 
@@ -18,8 +18,8 @@ export default class HomeScreen extends React.Component<{}, MyState> {
     this.pageNavi = this.pageNavi.bind(this);
     this.searchTeams = this.searchTeams.bind(this);
     this.state = {
-      teams: sessionStorage.teams ? JSON.parse(sessionStorage.teams) : [],
-      page: props.match.params.page ? parseInt(props.match.params.page) : 1, // let user go to page from address bar
+      teams: sessionStorage.teams ? JSON.parse(sessionStorage.teams) : [], // can also use redux instead of sessionstorage but I feel like the app is not quite big for redux
+      page: props.match.params.page ? props.match.params.page : 1, // let user go to team from address bar
       entries: localStorage.entries ? JSON.parse(localStorage.entries) : 10, // user's preference, saved on local for next time
       searchWord: "",
     };
@@ -27,14 +27,15 @@ export default class HomeScreen extends React.Component<{}, MyState> {
 
   pageNavi(page: number): void {
     // navigate page
-    window.history.pushState({}, "", JSON.stringify(page));
+    window.history.pushState({}, "", '/page/' + JSON.stringify(page));
+    window.scrollTo({ top: 0, behavior: 'smooth' }); // this line not tested yet
     this.setState({
       page,
     });
   }
 
   refreshTeams(): void {
-    // refresh when user go to website first time and also make it an option
+    // refresh when user go to website first time and also can be made into an option
     fetchTeams().then((teams) => {
       sessionStorage.setItem("teams", JSON.stringify(teams));
       this.setState({
@@ -63,13 +64,13 @@ export default class HomeScreen extends React.Component<{}, MyState> {
   }
 
   render() {
-    const { page, entries, teams } = this.state; // make code easier to understand
+    const { page, entries, teams, searchWord } = this.state; // make code easier to understand
     
     return (
-      <>
+      <div className="homescreen">
         <SearchBar 
           searchTeams={this.searchTeams} 
-          searchWord={this.state.searchWord}  
+          searchWord={searchWord}  
         />
         <Teams teams={teams.slice((page - 1) * entries, page * entries)} />
         <Pagination
@@ -77,7 +78,7 @@ export default class HomeScreen extends React.Component<{}, MyState> {
           pagemax={Math.ceil(teams.length / entries)}
           pageNavi={this.pageNavi}
         />
-      </>
+      </div>
     );
   }
 }
