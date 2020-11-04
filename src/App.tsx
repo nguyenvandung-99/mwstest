@@ -6,10 +6,10 @@ import TeamDetail from "./screens/TeamDetail";
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
       <div className="App">
         <header>
-          <Link to="/page/1">Home</Link>
+          <Link to="/">Home</Link>
         </header>
         <main>
           <Switch>
@@ -17,7 +17,7 @@ function App() {
             <Route path="/page/:page" component={HomeScreen} exact />
             <Route path="/teamdetail/:team" component={TeamDetail} />
           </Switch>
-        </main>
+        </main> 
         <footer>
           <Footer />
         </footer>

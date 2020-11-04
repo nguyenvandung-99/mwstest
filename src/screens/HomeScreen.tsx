@@ -27,7 +27,7 @@ export default class HomeScreen extends React.Component<{}, MyState> {
 
   pageNavi(page: number): void {
     // navigate page
-    window.history.pushState({}, "", "/page/" + JSON.stringify(page));
+    window.history.pushState({}, "", process.env.PUBLIC_URL + "/page/" + JSON.stringify(page));
     window.scrollTo({ top: 0, behavior: "smooth" }); // this line not tested yet
     this.setState({
       page,

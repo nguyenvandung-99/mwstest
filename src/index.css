@@ -134,6 +134,11 @@ input[title="search"] {
   margin: -0.05rem;
 }
 
+.pagination button:disabled {
+  background-color: #eee;
+  opacity: 1;
+}
+
 form {
   display: inline;
 }
