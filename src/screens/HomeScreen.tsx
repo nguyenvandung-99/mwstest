@@ -19,16 +19,16 @@ export default class HomeScreen extends React.Component<{}, MyState> {
     this.searchTeams = this.searchTeams.bind(this);
     this.state = {
       teams: sessionStorage.teams ? JSON.parse(sessionStorage.teams) : [], // can also use redux instead of sessionstorage but I feel like the app is not quite big for redux
-      page: props.match.params.page ? props.match.params.page : 1, // let user go to team from address bar
-      entries: localStorage.entries ? JSON.parse(localStorage.entries) : 10, // user's preference, saved on local for next time
+      page: props.match.params.page ? parseInt(props.match.params.page) : 1, // let user go to team from address bar
+      entries: localStorage.entries ? JSON.parse(localStorage.entries) : 10, // user's preference, saved on local for next time. The feature hasn't been coded in yet
       searchWord: "",
     };
   }
 
   pageNavi(page: number): void {
     // navigate page
-    window.history.pushState({}, "", '/page/' + JSON.stringify(page));
-    window.scrollTo({ top: 0, behavior: 'smooth' }); // this line not tested yet
+    window.history.pushState({}, "", "/page/" + JSON.stringify(page));
+    window.scrollTo({ top: 0, behavior: "smooth" }); // this line not tested yet
     this.setState({
       page,
     });
@@ -47,15 +47,16 @@ export default class HomeScreen extends React.Component<{}, MyState> {
   searchTeams(word: string): void {
     // search for teams
     this.pageNavi(1);
-    if (word === '') {
+    if (word === "") {
       this.setState({
         teams: JSON.parse(sessionStorage.teams),
-      })
+      });
     } else {
       this.setState({
-        teams: JSON.parse(sessionStorage.teams)
-          .filter((team: Team) => team.school.toLowerCase().includes(word.toLowerCase())),
-      })
+        teams: JSON.parse(sessionStorage.teams).filter((team: Team) =>
+          team.school.toLowerCase().includes(word.toLowerCase())
+        ),
+      });
     }
   }
 
@@ -65,13 +66,10 @@ export default class HomeScreen extends React.Component<{}, MyState> {
 
   render() {
     const { page, entries, teams, searchWord } = this.state; // make code easier to understand
-    
+
     return (
       <div className="homescreen">
-        <SearchBar 
-          searchTeams={this.searchTeams} 
-          searchWord={searchWord}  
-        />
+        <SearchBar searchTeams={this.searchTeams} searchWord={searchWord} />
         <Teams teams={teams.slice((page - 1) * entries, page * entries)} />
         <Pagination
           page={page}

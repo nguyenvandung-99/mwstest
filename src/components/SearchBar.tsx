@@ -5,6 +5,7 @@ export default function SearchBar(props: any) {
     <input
       type="text"
       placeholder="Search..."
+      title="search"
       onChange={(e) => props.searchTeams(e.target.value)}
     />
   );

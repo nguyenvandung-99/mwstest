@@ -34,6 +34,7 @@ export default function Pagination(props: any) {
         value={page}
         min={1}
         max={props.pagemax}
+        title="page"
         onChange={(e) => setPage(parseInt(e.target.value))} />
       </form>
       <button

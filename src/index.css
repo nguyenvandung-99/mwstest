@@ -1,18 +1,16 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
-
-
 
 html {
   font-size: 100%;
@@ -65,6 +63,18 @@ header a:hover {
   }
 }
 
+/* Search Bar */
+input[title="search"] {
+  width: 30rem;
+  max-width: 100%;
+  padding: 0.8rem 1.3rem;
+  margin: 1rem auto;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
 /* Teams */
 .teams {
   display: flex;
@@ -72,7 +82,7 @@ header a:hover {
   justify-content: center;
   align-items: center;
   padding: 0;
-  margin: 0 2rem;
+  margin: 0 2rem 1rem;
   list-style-type: none;
   color: #333;
 }
@@ -115,52 +125,94 @@ header a:hover {
   bottom: 1rem;
 }
 
+.pagination button,
+.pagination input {
+  padding: 1rem 0rem;
+  width: 4rem;
+  text-align: center;
+  border: solid 0.1rem #bbb;
+  margin: -0.05rem;
+}
+
 form {
   display: inline;
 }
 
-input[type="number"]::-webkit-outer-spin-button, 
+input[type="number"]::-webkit-outer-spin-button,
 input[type="number"]::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
+  -webkit-appearance: none;
+  margin: 0;
 }
 input[type="number"] {
-    -moz-appearance: textfield;
+  -moz-appearance: textfield;
 }
 
 /* Games */
 ul.games {
-  padding: 0rem 2rem;
+  margin: 0rem 2rem;
+  padding: 0rem;
 }
 
 .games li {
   display: flex;
   flex-wrap: wrap;
+  padding: 0.2rem;
+  border: 0.1rem solid #999;
 }
 
 .games li > * {
   padding: 0.2rem;
 }
 
-.games .game-time {
+.game-time {
   flex: 10%;
-  border: 0.1rem solid #bbb
 }
 
-.games .game-team {
+.game-time table {
+  margin: auto
+}
+
+.game-team {
   flex: 30%;
   text-align: left;
-  border: 0.1rem solid #bbb
 }
 
-.games .game-score {
-  flex: 50%;  
-  padding: auto;
-  border: 0.1rem solid #bbb
+.game-team table {
+  margin-left: 0.5rem
 }
 
-.games table th, .games table td {
+.game-score {
+  flex: 50%;
+}
+
+.game-score table {
+  margin-left: 2rem;
+}
+
+.games table th,
+.games table td {
   width: 3rem;
+}
+
+@media (max-width: 700px) {
+  /* only stick if it fits the screen*/
+  .games .game-time {
+    flex: 40%;
+  }
+  
+  .games .game-team {
+    flex: 50%;
+    text-align: left;
+  }
+
+  .games .game-score table {
+    flex: 0 1 auto;
+  }
+
+  .game-score table {
+    margin: auto
+  }
+  
 }
 
 /* Footer */

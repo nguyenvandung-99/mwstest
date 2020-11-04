@@ -17,18 +17,18 @@ export default function PreviousGames(props: any) {
                 style={{
                   backgroundColor:
                     (game.home_team === props.team) === WinOrLose(game) // true true and false false mean win, T F and F T mean lose
-                      ? "#9e9"
-                      : "#e99",
+                      ? "#afa"
+                      : "#faa",
                 }}
               >
                 <div className="game-time">
-                  <table style={{ margin: "auto" }}>
+                  <table>
                     <tr>{new Date(game.start_date).toString().slice(4, 10)}</tr>
                     <tr>{game.start_date.slice(11, 16)}</tr>
                   </table>
                 </div>
                 <div className="game-team">
-                  <table style={{ marginLeft: "0.5rem" }}>
+                  <table>
                     <tr style={WinOrLose(game) ? { fontWeight: "bold" } : {}}>
                       {game.home_team}
                     </tr>
@@ -38,7 +38,7 @@ export default function PreviousGames(props: any) {
                   </table>
                 </div>
                 <div className="game-score">
-                  <table style={{ marginLeft: "0.5rem" }}>
+                  <table>
                     <tr>
                       <th>{game.home_points}</th>
                       {game.home_line_scores.map((score: number) => (
